@@ -14,6 +14,22 @@
     </div>
 
     <nav local-class='nav'>
+      <Dropdown data-test-dark-mode-menu as |dd|>
+        <dd.Trigger local-class="dropdown-button dark-mode-toggle" data-test-dark-mode-toggle>
+          {{svg-jar this.preferredDarkMode.svg local-class="dark-mode-icon"}}
+        </dd.Trigger>
+
+        <dd.Menu local-class='dark-mode-options' as |menu|>
+          {{#each this.colorSchemes as |colorScheme|}}
+            <menu.Item>
+              <button local-class='dark-mode-menu-item' type="button" {{on 'click' (fn this.setDarkMode colorScheme.mode)}}>
+                {{colorScheme.mode}}
+              </button>
+            </menu.Item>
+          {{/each}}
+        </dd.Menu>
+      </Dropdown>
+
       <LinkTo @route="crates" @query={{hash letter=null page=1}} data-test-all-crates-link>
         Browse All Crates
       </LinkTo>
@@ -81,6 +97,22 @@
     </nav>
 
     <div local-class='menu'>
+      <Dropdown data-test-dark-mode-menu as |dd|>
+        <dd.Trigger local-class="dropdown-button dark-mode-toggle" data-test-dark-mode-toggle>
+          {{svg-jar this.preferredDarkMode.svg local-class="dark-mode-icon"}}
+        </dd.Trigger>
+
+        <dd.Menu local-class='dark-mode-options' as |menu|>
+          {{#each this.colorSchemes as |colorScheme|}}
+            <menu.Item>
+              <button local-class='dark-mode-menu-item' type="button" {{on 'click' (fn this.setDarkMode colorScheme.mode)}}>
+                {{colorScheme.mode}}
+              </button>
+            </menu.Item>
+          {{/each}}
+        </dd.Menu>
+      </Dropdown>
+
       <Dropdown as |dd|>
         <dd.Trigger local-class="dropdown-button">
           Menu

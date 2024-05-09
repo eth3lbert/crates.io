@@ -14,11 +14,13 @@ export default class ApplicationRoute extends Route {
   @service session;
   @service playground;
   @service sentry;
+  @service darkMode;
 
   async beforeModel(transition) {
     this.setSentryTransaction(transition);
     this.router.on('routeWillChange', transition => this.setSentryTransaction(transition));
     this.router.on('routeDidChange', transition => this.setSentryTransaction(transition));
+    this.darkMode.setupOnce();
 
     // trigger the task, but don't wait for the result here
     //

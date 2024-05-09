@@ -74,7 +74,22 @@
     /* Custom pairs */
     --space-s-l: clamp(0.88rem, calc(0.34rem + 2.68vw), 2.25rem);
 
-    color-scheme: light dark;
+}
+
+/* Allows setting dark mode manually, even at the element level. */
+/* Adapted from https://github.com/csstools/postcss-plugins/issues/1348#issuecomment-2030678571 */
+@layer theme {
+    :root {
+         color-scheme: light dark;
+    }
+
+    [data-dark-mode="light"] {
+         color-scheme: light;
+    }
+
+    [data-dark-mode="dark"] {
+         color-scheme: dark;
+    }
 }
 
 [data-theme="new-design"] {

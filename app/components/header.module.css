@@ -101,11 +101,15 @@
 .nav {
     grid-area: nav;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-self: end;
 
     @media only screen and (max-width: 900px) {
         display: none;
+    }
+
+    & > div {
+        display: inline-flex;
     }
 }
 
@@ -116,6 +120,10 @@
 
     @media only screen and (max-width: 900px) {
         display: block;
+    }
+
+    & > div {
+        vertical-align: top;
     }
 }
 
@@ -144,6 +152,19 @@
     }
 }
 
+.dark-mode-icon {
+    width: calc(var(--space-m) * .85);
+    height: auto;
+}
+
+.dark-mode-toggle {
+    border-radius: 9999px;
+    padding: var(--space-3xs);
+    margin-right: calc(var(--space-xs) * 2);
+    /* hdie arrow */
+    &.dropdown-button > span { display: none; }
+}
+
 .login-icon {
     width: 1em;
     margin-right: var(--space-2xs);
@@ -158,10 +179,16 @@
     margin-right: var(--space-3xs);
 }
 
-.current-user-links {
+.current-user-links,
+.dark-mode-options {
+    top: 120%;
     left: auto;
     right: 0;
     min-width: 200px;
+}
+
+.dark-mode-options {
+    min-width: max-content;
 }
 
 .dropdown-button {
@@ -177,7 +204,8 @@
 
 .login-menu-item,
 .logout-menu-item,
-.sudo-menu-item {
+.sudo-menu-item,
+.dark-mode-menu-item {
     composes: button-reset from '../styles/shared/buttons.module.css';
     cursor: pointer;
 
@@ -198,4 +226,8 @@
         font-style: italic;
         padding-top: var(--space-3xs);
     }
+}
+
+.dark-mode-menu-item {
+    text-transform: capitalize;
 }
